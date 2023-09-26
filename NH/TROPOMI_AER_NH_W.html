@@ -1,0 +1,189 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://momentjs.com/downloads/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+
+ <div data-role="fieldcontain">
+ <form id="myForm">
+    <fieldset data-role="controlgroup" data-type="horizontal" data-role="fieldcontain">
+    	<legend>NCEP-GDAS wind at Pressure level (mbar):</legend>
+         	<input type="radio" name="radio-choice-1" id="radio-choice-1" value="" checked="checked" />
+         	<label for="radio-choice-1">200</label>
+
+         	<input type="radio" name="radio-choice-1" id="radio-choice-2" value="_150mb"  />
+         	<label for="radio-choice-2">150</label>
+
+         	<input type="radio" name="radio-choice-1" id="radio-choice-3" value="_100mb"  />
+         	<label for="radio-choice-3">100</label>
+    </fieldset>
+  </form>  
+</div>
+  
+  
+  
+   
+<script>
+
+//$(function() {
+
+//});//
+
+
+var plev=$('input[name=radio-choice-1]:checked', '#myForm').val()
+
+$(document).ready(function(){
+
+$( "#datepicker" ).datepicker({maxDate: '+0D'});
+
+
+//selecting the button and adding a click event
+$("#alert").click(function() {
+    var plev=$('input[name=radio-choice-1]:checked', '#myForm').val();
+    //alerting the value inside the textbox
+    var date = $("#datepicker").datepicker("getDate");
+        if(date) {
+            var imgSrc = 'MASKED/AER_MASKED_WRD_' + $.datepicker.formatDate("yymmdd", date) + plev+ '.png';
+            $('#show-image').show().attr('src', imgSrc);
+            var imgSrc2 = 'CO/CO_WRD_' + $.datepicker.formatDate("yymmdd", date) + '.png';
+            $('#show-image2').show().attr('src', imgSrc2);
+        }
+    });//
+
+
+$('#datepicker').val(moment().format('MM/DD/YYYY'));
+    $('#datepicker').datepicker({maxDate: '+0D'});
+    var date = $("#datepicker").datepicker("getDate");
+    var plev=$('input[name=radio-choice-1]:checked', '#myForm').val();   
+    var imgSrc = 'MASKED/AER_MASKED_WRD_' + $.datepicker.formatDate("yymmdd", date) + plev+ '.png';
+    $('#show-image').show().attr('src', imgSrc);
+    var imgSrc2 = 'CO/CO_WRD_' + $.datepicker.formatDate("yymmdd", date) + '.png';
+    $('#show-image2').show().attr('src', imgSrc2);
+    
+   $('.next-day').on('click', function () {
+       var plev=$('input[name=radio-choice-1]:checked', '#myForm').val();
+       var date = $('#datepicker').datepicker('getDate');
+       date.setDate(date.getDate() +1)
+       $('#datepicker').datepicker('setDate', date);
+       var imgSrc = 'MASKED/AER_MASKED_WRD_' + $.datepicker.formatDate("yymmdd", date) + plev+ '.png';
+       $('#show-image').show().attr('src', imgSrc);
+       var imgSrc2 = 'CO/CO_WRD_' + $.datepicker.formatDate("yymmdd", date) + '.png';
+       $('#show-image2').show().attr('src', imgSrc2);
+    
+   });
+   $('.prev-day').on('click', function () {
+       var plev=$('input[name=radio-choice-1]:checked', '#myForm').val();
+       var date = $('#datepicker').datepicker('getDate');
+       date.setDate(date.getDate() -1)
+       $('#datepicker').datepicker('setDate', date);
+       var imgSrc = 'MASKED/AER_MASKED_WRD_' + $.datepicker.formatDate("yymmdd", date) + plev+ '.png';
+       $('#show-image').show().attr('src', imgSrc);
+       var imgSrc2 = 'CO/CO_WRD_' + $.datepicker.formatDate("yymmdd", date) + '.png';
+       $('#show-image2').show().attr('src', imgSrc2);
+   });
+   $('.today-date').on('click', function () {
+       $('#datepicker').val(moment().format('MM/DD/YYYY'));
+       $('#datepicker').datepicker();
+       //var date = moment().format('MM/DD/YYYY');
+       var date = $("#datepicker").datepicker("getDate");
+       var plev=$('input[name=radio-choice-1]:checked', '#myForm').val();
+       //$('#datepicker').datepicker('setDate', date);
+       //document.write(date);
+       //$('#datepicker').val(moment().format('MM/DD/YYYY'));
+       //var date = $("#datepicker").datepicker("getDate");
+       //$('#datepicker').datepicker('setDate', date);
+       //var date = $("#datepicker").datepicker("getDate");
+       var imgSrc = 'MASKED/AER_MASKED_WRD_' + $.datepicker.formatDate("yymmdd", date) + plev+ '.png';
+       //document.write(imgSrc);
+       $('#show-image').show().attr('src', imgSrc);
+       var imgSrc2 = 'CO/CO_WRD_' + $.datepicker.formatDate("yymmdd", date) + '.png';
+       $('#show-image2').show().attr('src', imgSrc2);
+       
+   });
+   });
+
+
+
+   </script>
+
+<button class="prev-day btn btn-outline-secondary"><i class="fa fa-angle-left" aria-hidden='true'></i></button>
+<button class='today-date btn btn-outline-secondary'>Today</button>
+<input type='text' id='datepicker'  name='datepicker'>
+<button class='next-day btn btn-outline-secondary' ><i class='fa fa-angle-right' aria-hidden='true'></i></button>
+
+<p>Show: <button id="alert">Show</button>
+
+<body>
+
+<!--------------------------------------------------------------------------->
+<h2> TROPOMI AI and CO observations at 10 km grid </h2>
+
+<table border="1" style="width:100%">
+
+
+  <tr> <!--  -->
+
+    <td align="center" style="width:100%;height:auto;">
+      <img src='' alt="myimage" id="show-image" style="width:100%;height:auto;"  >
+    </td>
+
+  </tr> <!--  -->
+
+
+</table> <!---------------------------------------------------------->
+
+
+<table border="1" style="width:100%">
+
+
+  <tr> <!--  -->
+
+    <td align="center" style="width:100%;height:auto;">
+      <img src='' alt="myimage2" id="show-image2" style="width:100%;height:auto;">
+    </td>
+  </tr> <!--  -->
+
+
+</table>
+
+
+
+
+
+
+
+</body>
+
+<head>
+<style>
+    #logo{ 
+    	position:fixed; 
+    	top:0; 
+    	right:0; 
+    } 
+
+h2 {text-align: center;}
+
+legend{
+ font-size: 15px; 
+}
+
+</style>
+</head>
+
+
+    <div id="logo"> 
+    	<img src="anr-logo-2021.png"> 
+    </div> 
+
+
+
+
+
+
+
