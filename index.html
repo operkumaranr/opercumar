@@ -50,7 +50,7 @@ $("#alert").click(function() {
         if(date) {
             var imgSrc = 'NH/MASKED/AER_MASKED_WRD_' + $.datepicker.formatDate("yymmdd", date) + plev+ '.png';
             $('#show-image').show().attr('src', imgSrc);
-            var imgSrc2 = 'CO/CO_WRD_' + $.datepicker.formatDate("yymmdd", date) + '.png';
+            var imgSrc2 = 'NH/CO/CO_WRD_' + $.datepicker.formatDate("yymmdd", date) + '.png';
             $('#show-image2').show().attr('src', imgSrc2);
         }
     });//
@@ -62,7 +62,7 @@ $('#datepicker').val(moment().format('MM/DD/YYYY'));
     var plev=$('input[name=radio-choice-1]:checked', '#myForm').val();   
     var imgSrc = 'NH/MASKED/AER_MASKED_WRD_' + $.datepicker.formatDate("yymmdd", date) + plev+ '.png';
     $('#show-image').show().attr('src', imgSrc);
-    var imgSrc2 = 'CO/CO_WRD_' + $.datepicker.formatDate("yymmdd", date) + '.png';
+    var imgSrc2 = 'NH/CO/CO_WRD_' + $.datepicker.formatDate("yymmdd", date) + '.png';
     $('#show-image2').show().attr('src', imgSrc2);
     
    $('.next-day').on('click', function () {
@@ -72,7 +72,7 @@ $('#datepicker').val(moment().format('MM/DD/YYYY'));
        $('#datepicker').datepicker('setDate', date);
        var imgSrc = 'NH/MASKED/AER_MASKED_WRD_' + $.datepicker.formatDate("yymmdd", date) + plev+ '.png';
        $('#show-image').show().attr('src', imgSrc);
-       var imgSrc2 = 'CO/CO_WRD_' + $.datepicker.formatDate("yymmdd", date) + '.png';
+       var imgSrc2 = 'NH/CO/CO_WRD_' + $.datepicker.formatDate("yymmdd", date) + '.png';
        $('#show-image2').show().attr('src', imgSrc2);
     
    });
@@ -83,7 +83,7 @@ $('#datepicker').val(moment().format('MM/DD/YYYY'));
        $('#datepicker').datepicker('setDate', date);
        var imgSrc = 'NH/MASKED/AER_MASKED_WRD_' + $.datepicker.formatDate("yymmdd", date) + plev+ '.png';
        $('#show-image').show().attr('src', imgSrc);
-       var imgSrc2 = 'CO/CO_WRD_' + $.datepicker.formatDate("yymmdd", date) + '.png';
+       var imgSrc2 = 'NH/CO/CO_WRD_' + $.datepicker.formatDate("yymmdd", date) + '.png';
        $('#show-image2').show().attr('src', imgSrc2);
    });
    $('.today-date').on('click', function () {
@@ -101,7 +101,7 @@ $('#datepicker').val(moment().format('MM/DD/YYYY'));
        var imgSrc = 'NH/MASKED/AER_MASKED_WRD_' + $.datepicker.formatDate("yymmdd", date) + plev+ '.png';
        //document.write(imgSrc);
        $('#show-image').show().attr('src', imgSrc);
-       var imgSrc2 = 'CO/CO_WRD_' + $.datepicker.formatDate("yymmdd", date) + '.png';
+       var imgSrc2 = 'NH/CO/CO_WRD_' + $.datepicker.formatDate("yymmdd", date) + '.png';
        $('#show-image2').show().attr('src', imgSrc2);
        
    });
